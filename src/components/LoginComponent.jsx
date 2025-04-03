@@ -32,6 +32,7 @@ const LoginComponent = () => {
   const [error, setError] = useState("");
   const [userId, setUserId] = useState(null);
   const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState("")
   const [timer, setTimer] = useState(0);
   const timerRef = useRef(null);
   const { login } = useAuth();
@@ -301,6 +302,8 @@ const LoginComponent = () => {
                       <Input
                         id="otp"
                         name="otp"
+                        value={otp}
+                        onChange={(e) => setOtp(e.target.value)}
                         placeholder="Enter the OTP sent to your mobile"
                         required
                       />
