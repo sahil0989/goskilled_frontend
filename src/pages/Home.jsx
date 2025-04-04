@@ -26,7 +26,7 @@ export default function Home() {
                     {/* heading  */}
                     <div className='pb-5 w-full'>
                         <div className='relative'>
-                            <h1 className='text-3xl md:text-6xl font-bold flex'>
+                            <h1 className='text-3xl md:text-7xl font-bold flex'>
                                 <span className='text-[#1A6E0A] flex flex-col relative pr-5'>
                                     Improve
                                     <img src={element1} className='absolute top-5' alt='' />
@@ -35,7 +35,7 @@ export default function Home() {
                             <img src={element2} className='absolute w-14 -top-10 right-10 z-10' alt='' />
                         </div>
                         <br />
-                        <h1 className='text-3xl md:text-6xl font-bold'>with Different Way</h1>
+                        <h1 className='text-3xl md:text-7xl font-bold'>with Different Way</h1>
                     </div>
                     <p className='text-sm md:text-base'>GoSkilled is your gateway to mastering in-demand skills and unlocking new career opportunities. With expert-led courses, you can learn, grow, and even earn through our unique rewards system.Take the first step today and improve your skills in a smarter way!</p>
 
