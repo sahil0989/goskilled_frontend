@@ -22,6 +22,7 @@ import {
   AlertDialogDescription,
 } from "../@/components/ui/alert-dialog";
 import { useAuth } from "../context/AuthContext";
+import { toast } from "sonner";
 
 const RegisterComponent = () => {
   const [phoneData, setPhoneData] = useState({
@@ -97,7 +98,9 @@ const RegisterComponent = () => {
         timer: 60,
         canResend: false,
       });
+      toast.success("Registration Successfully!! Please verify your Number")
     } catch (err) {
+      toast.error(err.response?.data?.message)
       setError(err.response?.data?.message || "Registration failed");
     } finally {
       setIsLoading(false);
@@ -119,6 +122,7 @@ const RegisterComponent = () => {
         canResend: false,
       });
     } catch (err) {
+      toast.error('Failed to send OTP')
       setError(err.response?.data?.message || "Failed to send OTP");
     }
   };
@@ -132,15 +136,13 @@ const RegisterComponent = () => {
       setSuccess(response.data.message);
       localStorage.setItem("token", response.data.data.token);
       login(response.data.data.user)
+      toast.success('Verification Successfully!!')
       navigate("/dashboard");
     } catch (err) {
+      toast.error(err.response?.data?.message)
       setError(err.response?.data?.message || "OTP verification failed");
     }
   };
-
-  const handlefunction = () => {
-    console.log("Click on input function")
-  }
 
   return (
     <>
@@ -181,7 +183,6 @@ const RegisterComponent = () => {
                       <Input
                         {...field}
                         id="name"
-                        onClick={handlefunction()}
                         placeholder="John Doe"
                         className={errors.name ? "border-red-500" : ""}
                       />

@@ -24,7 +24,7 @@ import { AlertCircle } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { backendUrl } from "../services";
 import { useAuth } from "../context/AuthContext";
-import { Toaster } from "sonner";
+import { toast } from "sonner";
 
 const LoginComponent = () => {
   const navigate = useNavigate();
@@ -44,7 +44,6 @@ const LoginComponent = () => {
     };
   }, []);
 
-  console.log(`${backendUrl}`)
   // Handle login
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -74,6 +73,7 @@ const LoginComponent = () => {
       const data = await response.json();
 
       if (!response.ok) {
+        toast.error('Login Failed!!')
         throw new Error(data.message || "Login failed");
       }
 
@@ -83,10 +83,11 @@ const LoginComponent = () => {
       // Store user data in AuthContext
       login(data.data);
 
+      toast.success("Login Successfully!!")
       // Redirect to dashboard or home page
       navigate("/dashboard");
     } catch (error) {
-      setError(error.message || "An error occurred during login");
+      toast.error(error.message)
     } finally {
       setIsLoading(false);
     }
@@ -111,6 +112,7 @@ const LoginComponent = () => {
       const data = await response.json();
 
       if (!response.ok) {
+        toast.error('Failed to Send OTP')
         throw new Error(data.message || "Failed to send OTP");
       }
 
@@ -130,6 +132,7 @@ const LoginComponent = () => {
         });
       }, 1000);
     } catch (error) {
+      toast.error("An error occurred while sending OTP")
       setError(error.message || "An error occurred while sending OTP");
     } finally {
       setIsLoading(false);
@@ -155,15 +158,18 @@ const LoginComponent = () => {
       const data = await response.json();
 
       if (!response.ok) {
+        toast.error("Invalid OTP")
         throw new Error(data.message || "Invalid OTP");
       }
 
       localStorage.setItem("token", data.data.token);
       // Store user data in AuthContext
       login(data.data);
+      toast.success('Login Successfully!!')
       navigate("/dashboard");
     } catch (error) {
-      setError(error.message || "An error occurred during OTP verification");
+      // setError(error.message || "An error occurred during OTP verification");
+      toast.error("An error occurred during OTP verification")
     } finally {
       setIsLoading(false);
     }
@@ -188,6 +194,7 @@ const LoginComponent = () => {
       const data = await response.json();
 
       if (!response.ok) {
+        toast.error('Failed to resend OTP')
         throw new Error(data.message || "Failed to resend OTP");
       }
 
@@ -206,6 +213,7 @@ const LoginComponent = () => {
         });
       }, 1000);
     } catch (error) {
+      toast.error('An error occurred while resending OTP')
       setError(error.message || "An error occurred while resending OTP");
     } finally {
       setIsLoading(false);
@@ -214,7 +222,6 @@ const LoginComponent = () => {
 
   return (
     <>
-      <Toaster />
       <div
         className="flex justify-center items-center p-4 bg-gray-50"
         style={{ height: "calc(100vh - 80.8px" }}

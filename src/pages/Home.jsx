@@ -10,6 +10,7 @@ import CourseBlock from '../components/CourseBlock';
 import element3 from "../images/elements/3.png"
 import Footer from '../components/Footer'
 import { Link } from 'react-router-dom'
+import { toast } from 'sonner'
 
 export default function Home() {
 
@@ -39,7 +40,7 @@ export default function Home() {
                     </div>
                     <p className='text-sm md:text-base'>GoSkilled is your gateway to mastering in-demand skills and unlocking new career opportunities. With expert-led courses, you can learn, grow, and even earn through our unique rewards system.Take the first step today and improve your skills in a smarter way!</p>
 
-                    <Button className="bg-[#1A6E0A] hover:bg-[#204718] cursor-pointer my-4" >Get Started</Button>
+                    <Button onClick={() => toast("Checking Alerts")} className="bg-[#1A6E0A] hover:bg-[#204718] cursor-pointer my-4" >Get Started</Button>
                 </div>
                 <div className='w-full flex justify-center'>
                     <img src={img1} className='w-3/5' alt='' />

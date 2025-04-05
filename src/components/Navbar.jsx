@@ -5,6 +5,7 @@ import logo_full from "../images/logo_full.png"
 import { Link } from 'react-router-dom';
 import { Button } from '../@/components/ui/button';
 import { useAuth } from '../context/AuthContext';
+import { toast } from 'sonner';
 
 const Navbar = () => {
 
@@ -12,6 +13,7 @@ const Navbar = () => {
     const { user, logout } = useAuth();
 
     const handleLogout = () => {
+        toast.success("Logout Successfully!!")
         logout();
         setNavOpen(false);
     }
@@ -50,7 +52,7 @@ const Navbar = () => {
                         {
                             user ? (<div>
                                 <div>
-                                    <Button onClick={() => logout()} className="border-2 border-[#1A6E0A] bg-transparent text-[#1A6E0A] hover:bg-[#1A6E0A] hover:text-white hidden md:block">LogOut</Button>
+                                    <Button onClick={handleLogout} className="border-2 border-[#1A6E0A] bg-transparent text-[#1A6E0A] hover:bg-[#1A6E0A] hover:text-white hidden md:block">LogOut</Button>
                                 </div>
                             </div>) : (
                                 <div className='flex gap-3 items-center'>

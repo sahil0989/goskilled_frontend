@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react';
-import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function Courses() {
-    const { user } = useAuth();
+
+    const { user } = useAuth()
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!user) {
-            navigate("/auth/login");
+        const handleLogin = () => {
+            const storedUser = localStorage.getItem("user");
+            if (!storedUser) {
+                navigate("/auth/login")
+            }
         }
+        handleLogin()
     }, [user, navigate]);
-
-    if (!user) {
-        navigate("/auth/login")
-    }
 
     return <>
         <div
