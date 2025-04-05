@@ -254,11 +254,11 @@ const LoginComponent = () => {
               <TabsContent value="password">
                 <form onSubmit={handleLogin} className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="emailOrMobile">Email or Mobile Number</Label>
+                    <Label htmlFor="emailOrMobile">Mobile Number</Label>
                     <Input
                       id="emailOrMobile"
                       name="emailOrMobile"
-                      placeholder="Email or Mobile Number"
+                      placeholder="Mobile Number"
                       required
                     />
                   </div>

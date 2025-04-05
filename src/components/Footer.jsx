@@ -37,11 +37,21 @@ export default function Footer() {
                 <div className='md:w-full'></div>
                 <div className='text-white/50 cursor-not-allowed md:w-full'>All Rights Reserved © 2025 || GOSKILLED</div>
                 <div className='flex gap-6 px-8 text-white'>
-                    <AiFillInstagram className=' cursor-pointer' size={28} />
-                    <FaFacebookSquare className=' cursor-pointer' size={28} />
-                    <FaSquareXTwitter className=' cursor-pointer' size={28} />
-                    <FaYoutube className=' cursor-pointer' size={28} />
-                    <IoLogoWhatsapp className=' cursor-pointer' size={28} />
+                    <Link to={'https://instagram.com/goskilled.in'}>
+                        <AiFillInstagram className=' cursor-pointer' size={28} />
+                    </Link>
+                    <Link to={'https://www.facebook.com/profile.php?id=61565884031858'}>
+                        <FaFacebookSquare className=' cursor-pointer' size={28} />
+                    </Link>
+                    <Link to={'https://x.com/Goskilled_in'}>
+                        <FaSquareXTwitter className=' cursor-pointer' size={28} />
+                    </Link>
+                    <Link to={'https://www.youtube.com/@Goskilled'}>
+                        <FaYoutube className=' cursor-pointer' size={28} />
+                    </Link>
+                    <Link to={'https://chat.whatsapp.com/Fhcg5aqLfvVAOHhcwoEJaY'}>
+                        <IoLogoWhatsapp className=' cursor-pointer' size={28} />
+                    </Link>
                 </div>
             </div>
         </div>
