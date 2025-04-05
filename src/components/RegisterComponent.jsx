@@ -116,6 +116,7 @@ const RegisterComponent = () => {
         }
       );
       setSuccess(response.data.message);
+      toast.message(`OTP send on ${phoneData.mobileNumber}`);
       updatePhoneData({
         otpSent: true,
         timer: 60,
