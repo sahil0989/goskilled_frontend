@@ -77,9 +77,7 @@ const RegisterComponent = () => {
       if (intervalId) clearInterval(intervalId);
     };
   }, [phoneData.otpSent, phoneData.timer]);
-  
-  console.log(`Backend: ${backendUrl}`)
-  
+    
   const handleRegister = async (data) => {
     setError("");
     setSuccess("");
@@ -116,7 +114,7 @@ const RegisterComponent = () => {
         }
       );
       setSuccess(response.data.message);
-      toast.message(`OTP send on ${phoneData.mobileNumber}`);
+      toast.info(`OTP send on ${phoneData.mobileNumber}`);
       updatePhoneData({
         otpSent: true,
         timer: 60,
@@ -135,12 +133,19 @@ const RegisterComponent = () => {
         otp: phoneData.otp,
       });
       setSuccess(response.data.message);
+
+      
       localStorage.setItem("token", response.data.data.token);
+
       login(response.data.data.user)
+    
+    
       toast.success('Verification Successfully!!')
       navigate("/dashboard");
+    
+    
     } catch (err) {
-      toast.error(err.response?.data?.message)
+      toast.error(err.response?.data?.message || "OTP Error")
       setError(err.response?.data?.message || "OTP verification failed");
     }
   };

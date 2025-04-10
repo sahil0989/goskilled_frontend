@@ -115,7 +115,7 @@ const LoginComponent = () => {
         toast.error('Failed to Send OTP')
         throw new Error(data.message || "Failed to send OTP");
       } else{
-        toast.message(`OTP send on ${mobileNumber}`)
+        toast.info(`OTP send on ${mobileNumber}`)
       }
 
       // Store userId for OTP verification

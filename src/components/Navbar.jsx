@@ -51,7 +51,10 @@ const Navbar = () => {
                         }
                         {
                             user ? (<div>
-                                <div>
+                                <div className='flex gap-4'>
+                                    <Link to={'/dashboard'}>
+                                        <Button className="bg-[#1A6E0A] hover:bg-[#204718] hidden md:block">Dashboard</Button>
+                                    </Link>
                                     <Button onClick={handleLogout} className="border-2 border-[#1A6E0A] bg-transparent text-[#1A6E0A] hover:bg-[#1A6E0A] hover:text-white hidden md:block">LogOut</Button>
                                 </div>
                             </div>) : (
@@ -89,18 +92,21 @@ const Navbar = () => {
                         <div className='flex gap-4 mt-2'>
                             {
                                 user ? (<div className='pl-6'>
-                                    <div>
+                                    <div className='flex gap-4'>
+                                        <Link to={'/dashboard'}>
+                                            <Button onClick={() => setNavOpen(false)} className="bg-[#1A6E0A] hover:bg-[#204718] md:hidden">Dashboard</Button>
+                                        </Link>
                                         <Button onClick={handleLogout} className="border-2 border-[#1A6E0A] bg-transparent text-[#1A6E0A] hover:bg-[#1A6E0A] hover:text-white">LogOut</Button>
                                     </div>
                                 </div>) : (
                                     <div className='flex gap-3 items-center pl-6'>
-                                    <Link to={"/auth/login"}>
-                                        <Button onClick={() => setNavOpen(false)} className="bg-[#1A6E0A] hover:bg-[#204718]">Login</Button>
-                                    </Link>
-                                    <Link to={"/auth/register"}>
-                                        <Button onClick={() => setNavOpen(false)} className="border-2 border-[#1A6E0A] bg-transparent text-[#1A6E0A] hover:bg-[#1A6E0A] hover:text-white">Sign Up</Button>
-                                    </Link>
-                                </div>
+                                        <Link to={"/auth/login"}>
+                                            <Button onClick={() => setNavOpen(false)} className="bg-[#1A6E0A] hover:bg-[#204718]">Login</Button>
+                                        </Link>
+                                        <Link to={"/auth/register"}>
+                                            <Button onClick={() => setNavOpen(false)} className="border-2 border-[#1A6E0A] bg-transparent text-[#1A6E0A] hover:bg-[#1A6E0A] hover:text-white">Sign Up</Button>
+                                        </Link>
+                                    </div>
                                 )
                             }
                         </div>

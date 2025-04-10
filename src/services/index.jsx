@@ -1,1 +1,1 @@
-export const backendUrl = "https://goskilled.onrender.com"
+export const backendUrl = "https://api.goskilled.in"

@@ -9,14 +9,36 @@ import { Button } from '../@/components/ui/button'
 import CourseBlock from '../components/CourseBlock';
 import element3 from "../images/elements/3.png"
 import Footer from '../components/Footer'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
+import course1 from "../images/courses/1.png"
+import course2 from "../images/courses/2.png"
+import { useAuth } from '../context/AuthContext'
 
 export default function Home() {
 
+    const { user } = useAuth();
+    const navigate = useNavigate()
+
     const courses = [
-        {}, {}
+        {
+            imgUrl: course1,
+            title: "Digital Marketing Mastery – Master Online Growth & Sales",
+            description: "Become a certified digital marketing expert & launch your career or business online.",
+        }, {
+            imgUrl: course2,
+            title: "Content Creation Mastery: Master Strategies to Grow Your Brand",
+            description: "Course designed to help you craft compelling content, build a strong online presence, and strategically grow your brand across digital platforms. Perfect for creators, entrepreneurs, and marketers ready to level up their influence."
+        }
     ]
+
+    const handlebutton = () => {
+        if (user) {
+            toast.success("Already Login!!")
+        } else {
+            navigate('/auth/register')
+        }
+    }
 
     return (
         <div>
@@ -40,7 +62,7 @@ export default function Home() {
                     </div>
                     <p className='text-sm md:text-base'>GoSkilled is your gateway to mastering in-demand skills and unlocking new career opportunities. With expert-led courses, you can learn, grow, and even earn through our unique rewards system.Take the first step today and improve your skills in a smarter way!</p>
 
-                    <Button onClick={() => toast("Checking Alerts")} className="bg-[#1A6E0A] hover:bg-[#204718] cursor-pointer my-4" >Get Started</Button>
+                    <Button onClick={() => handlebutton()} className="bg-[#1A6E0A] hover:bg-[#204718] cursor-pointer my-4" >Get Started</Button>
                 </div>
                 <div className='w-full flex justify-center'>
                     <img src={img1} className='w-3/5' alt='' />
@@ -75,8 +97,8 @@ export default function Home() {
                     </div>
                     <div className='flex flex-col md:flex-row gap-10 md:gap-24'>
                         {
-                            courses.map(() => {
-                                return <CourseBlock />
+                            courses.map((data, index) => {
+                                return <CourseBlock key={index} data={data} />
                             })
                         }
                     </div>

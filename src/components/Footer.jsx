@@ -49,8 +49,8 @@ export default function Footer() {
                     <Link to={'https://www.youtube.com/@Goskilled'}>
                         <FaYoutube className=' cursor-pointer' size={28} />
                     </Link>
-                    <Link to={'https://chat.whatsapp.com/Fhcg5aqLfvVAOHhcwoEJaY'}>
-                        <IoLogoWhatsapp className=' cursor-pointer' size={28} />
+                    <Link to={"https://wa.link/eesg7m"}>
+                        <IoLogoWhatsapp className='cursor-pointer' size={28} />
                     </Link>
                 </div>
             </div>
